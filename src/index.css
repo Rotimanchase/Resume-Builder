@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+@import "tailwindcss";
+
+* {
+    font-family: "Outfit", sans-serif;
+  }
+
+@theme {
+  --color-background: #f9fafb;
+  --color-text-primary: #1f2937;
+  --color-primary: #3b82f6;
+  --color-secondary: #10b981;
+  --color-accent: #f59e0b;
+}
+
+body {
+  @apply bg-background text-text-primary;
+}
+
+@layer base {
+    button {
+        @apply cursor-pointer;
+    }
+    input:not([type="checkbox"]){
+      input:not([type="checkbox"]){
+        @apply outline-none focus:ring border border-gray-300 focus:ring-blue-500
+        focus:border-blue-500 rounded-lg
+      }
+      textarea{
+        @apply outline-none focus:ring border border-gray-300 focus:ring-blue-500
+        focus:border-blue-500 rounded-lg resize-none;
+      }
+    }
+}
+
+/* Add to your global CSS or component styles */
+@media print {
+  /* Hide everything by default */
+  body * {
+    visibility: hidden;
+  }
+  
+  /* Show only the resume and its children */
+  #resume-preview, #resume-preview * {
+    visibility: visible;
+  }
+  
+  /* Position resume at top-left for printing */
+  #resume-preview {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+  
+  /* Hide navigation, buttons, forms, etc. */
+  nav, button, .no-print {
+    display: none !important;
+  }
+}
