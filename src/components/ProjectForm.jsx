@@ -1,7 +1,7 @@
 import { Plus, Trash2 } from 'lucide-react'
 import React from 'react'
 
-const ProjectForm = ({data, onChange}) => {
+const ProjectForm = ({data=[], onChange}) => {
     const addProject = () => {
         const newProject = {
             name: "",
@@ -49,7 +49,7 @@ const ProjectForm = ({data, onChange}) => {
                     <div className='grid gap-3'>
                         <input value={project.name || ""} onChange={(e)=> updateProject(index, "name", e.target.value)} type="text" placeholder='Project Name' className='px-3 py-2 text-sm rounded-lg'/>
 
-                        <input value={project.type || ""} onChange={(e)=> updateProject(index, "type", e.target.value)} type="text" placeholder='Project Name' className='px-3 py-2 text-sm rounded-lg'/>
+                        <input value={project.type || ""} onChange={(e)=> updateProject(index, "type", e.target.value)} type="text" placeholder='Project Type' className='px-3 py-2 text-sm rounded-lg'/>
                         
                         <textarea rows={4} value={project.description || ""} onChange={(e)=> updateProject(index, "description", e.target.value)} placeholder='Describe your project' className='w-full px-3 py-2 text-sm rounded-lg resize-none'/>
 

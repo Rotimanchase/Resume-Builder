@@ -141,10 +141,17 @@ const MinimalImageTemplate = ({ data, accentColor }) => {
                                         <p className="text-sm mb-2" style={{ color: accentColor }} >
                                             {exp.company}
                                         </p>
-                                        {exp.description && (
+                                        {/* {exp.description && (
                                             <ul className="list-disc list-inside text-sm text-zinc-700 leading-relaxed space-y-1">
                                                 {exp.description.split("\n").map((line, i) => (
                                                     <li key={i}>{line}</li>
+                                                ))}
+                                            </ul>
+                                        )} */}
+                                        {Array.isArray(exp.description) && exp.description.length > 0 && (
+                                            <ul className="list-disc list-inside text-sm text-zinc-700 leading-relaxed space-y-1">
+                                                {exp.description.map((line, i) => (
+                                                <li key={i}>{line}</li>
                                                 ))}
                                             </ul>
                                         )}
@@ -155,25 +162,28 @@ const MinimalImageTemplate = ({ data, accentColor }) => {
                     )}
 
                     {/* Projects */}
-                    {data.project && data.project.length > 0 && (
+                    {data.projects && data.projects.length > 0 && (
                         <section>
                             <h2 className="text-sm uppercase tracking-widest font-semibold" style={{ color: accentColor }}>
                                 PROJECTS
                             </h2>
                             <div className="space-y-4">
-                                {data.project.map((project, index) => (
+                                {data.projects.map((project, index) => (
                                     <div key={index}>
                                         <h3 className="text-md font-medium text-zinc-800 mt-3">{project.name}</h3>
                                         <p className="text-sm mb-1" style={{ color: accentColor }} >
                                             {project.type}
                                         </p>
                                         {project.description && (
-                                            <ul className="list-disc list-inside text-sm text-zinc-700  space-y-1">
-                                                {project.description.split("\n").map((line, i) => (
-                                                    <li key={i}>{line}</li>
+                                            <ul className="list-disc list-inside text-sm text-zinc-700 space-y-1">
+                                                {(Array.isArray(project.description)
+                                                ? project.description
+                                                : project.description.split("\n")
+                                                ).map((line, i) => (
+                                                <li key={i}>{line}</li>
                                                 ))}
                                             </ul>
-                                        )}
+                                            )}
                                     </div>
                                 ))}
                             </div>
